@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PawConnect</string>
+    <string-array name="roles_array">
+        <item>adopter</item>
+        <item>rescuer</item>
+    </string-array>
+</resources>
+
+
