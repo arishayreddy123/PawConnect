@@ -9,6 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Image Preview and Selection -->
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/selectImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Pet Image"
+            android:layout_marginBottom="12dp"/>
+
         <EditText
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
