@@ -58,9 +58,14 @@ public class AddListingActivity extends AppCompatActivity {
                         .load(selectedImageUri)
                         .centerCrop()
                         .into(imagePreview);
-                    
-                    // Upload image to Imgur
-                    uploadImageToImgur(selectedImageUri);
+
+                    // Show AlertDialog before uploading the image to Imgur
+                    new androidx.appcompat.app.AlertDialog.Builder(this)
+                        .setTitle("Notice")
+                        .setMessage("The image will be uploaded to an external server (Imgur). Make sure it doesn't contain personal information.")
+                        .setPositiveButton("OK", (dialog, which) -> uploadImageToImgur(selectedImageUri))
+                        .setNegativeButton("Cancel", null)
+                        .show();
                 }
             }
         }
