@@ -9,7 +9,9 @@ public class Listing {
     public String age;
     public String description;
     public String ownerId;
-    public Timestamp timestamp; // ✅ Required for sorting
+    public Timestamp timestamp;
+    public String imageUrl;
+
 
     public Listing() {
         // Firestore requires a public empty constructor

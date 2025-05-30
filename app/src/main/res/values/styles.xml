@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base App Theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/hotPink</item>
+        <item name="colorPrimaryDark">@color/hotPinkDark</item>
+        <item name="colorAccent">@color/accentYellow</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:buttonStyle">@style/RelovedButton</item>
+        <item name="android:editTextStyle">@style/RelovedEditText</item>
+        <item name="android:textViewStyle">@style/RelovedTextView</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="RelovedButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/accentYellow</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+    <!-- EditText Style -->
+    <style name="RelovedEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/hintText</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- TextView Style -->
+    <style name="RelovedTextView" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- CardView Style (for preview boxes) -->
+    <style name="RelovedCardView" parent="CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardBackgroundColor">@color/hotPink</item>
+    </style>
+
+</resources>

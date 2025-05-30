@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.*;
 
 import java.util.*;
+import com.arishay.pawconnect.ListingManager;
+
 
 public class AdopterBrowseActivity extends AppCompatActivity {
 
