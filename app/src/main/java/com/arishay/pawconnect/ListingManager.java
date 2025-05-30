@@ -3,13 +3,15 @@ package com.arishay.pawconnect;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Singleton class to manage pet listings in memory (no Firestore).
+ */
 public class ListingManager {
     private static ListingManager instance;
-    private List<Listing> allListings;
+    private final List<Listing> listings;
 
     private ListingManager() {
-        allListings = new ArrayList<>();
-        // You can add default dummy listings here or load from Firebase
+        listings = new ArrayList<>();
     }
 
     public static ListingManager getInstance() {
@@ -19,26 +21,24 @@ public class ListingManager {
         return instance;
     }
 
-    public List<Listing> getAllListings() {
-        return allListings;
-    }
-
+    // Add a new listing
     public void addListing(Listing listing) {
-        allListings.add(listing);
+        listings.add(0, listing); // add to top (newest first)
     }
 
-    public void clearListings() {
-        allListings.clear();
+    // Get all listings
+    public List<Listing> getAllListings() {
+        return new ArrayList<>(listings);
     }
 
+    // Get listings by ownerId
     public List<Listing> getListingsByOwner(String ownerId) {
-        List<Listing> filtered = new ArrayList<>();
-        for (Listing listing : allListings) {
-            if (listing.ownerId != null && listing.ownerId.equals(ownerId)) {
-                filtered.add(listing);
+        List<Listing> result = new ArrayList<>();
+        for (Listing l : listings) {
+            if (l.ownerId != null && l.ownerId.equals(ownerId)) {
+                result.add(l);
             }
         }
-        return filtered;
+        return result;
     }
-
-}
+} 
