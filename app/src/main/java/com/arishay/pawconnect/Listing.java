@@ -14,7 +14,7 @@ public class Listing {
 
 
     // URL of the pet image (uploaded to Imgur or other storage)
-    public String imageUrl;
+//    public String imageUrl;
 
     public Listing() {
         // Firestore requires a public empty constructor
