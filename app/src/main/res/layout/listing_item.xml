@@ -8,6 +8,16 @@
     android:elevation="4dp"
     android:layout_margin="8dp">
 
+    <!-- ImageView to display the pet image loaded from Imgur or Firebase -->
+    <ImageView
+        android:id="@+id/petImageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Pet Image"
+        android:background="#EEEEEE"
+        android:layout_marginBottom="8dp"/>
+
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"

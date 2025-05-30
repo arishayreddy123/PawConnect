@@ -25,6 +25,7 @@ public class AdopterListingAdapter extends RecyclerView.Adapter<AdopterListingAd
         TextView name, breed, age, description, statusText;
         Button sendRequestButton;
         ImageButton favoriteButton;
+        ImageView petImageView;
 
         public ViewHolder(View view) {
             super(view);
@@ -37,6 +38,7 @@ public class AdopterListingAdapter extends RecyclerView.Adapter<AdopterListingAd
             statusText = new TextView(view.getContext());
             ((ViewGroup) view).addView(statusText);
             view.findViewById(R.id.deleteButton).setVisibility(View.GONE);
+            petImageView = view.findViewById(R.id.petImageView);
         }
     }
 
@@ -201,6 +203,17 @@ public class AdopterListingAdapter extends RecyclerView.Adapter<AdopterListingAd
                         });
                     }
                 });
+
+        if (pet.imageUrl != null && !pet.imageUrl.isEmpty()) {
+            com.bumptech.glide.Glide.with(context)
+                .load(pet.imageUrl)
+                .placeholder(android.R.color.darker_gray)
+                .error(android.R.drawable.ic_menu_report_image)
+                .centerCrop()
+                .into(holder.petImageView);
+        } else {
+            holder.petImageView.setImageResource(android.R.drawable.ic_menu_report_image);
+        }
     }
 
     @Override
