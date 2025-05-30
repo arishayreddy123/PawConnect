@@ -16,8 +16,6 @@ import androidx.core.content.ContextCompat;
 
 import com.arishay.pawconnect.api.ImgurApi;
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,7 +41,6 @@ public class AddListingActivity extends AppCompatActivity {
     private EditText nameInput, breedInput, ageInput, descriptionInput;
     private Button saveButton, selectImageButton;
     private ImageView imagePreview;
-    private FirebaseFirestore db;
     private Uri selectedImageUri;
     private String uploadedImageUrl;
 
@@ -76,7 +73,7 @@ public class AddListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_listing);
 
-        // Initialize views
+        // Initialize all input fields and buttons
         nameInput = findViewById(R.id.nameInput);
         breedInput = findViewById(R.id.breedInput);
         ageInput = findViewById(R.id.ageInput);
@@ -85,10 +82,13 @@ public class AddListingActivity extends AppCompatActivity {
         selectImageButton = findViewById(R.id.selectImageButton);
         imagePreview = findViewById(R.id.imagePreview);
 
-        db = FirebaseFirestore.getInstance();
+        // Disable the Save Listing button until image upload is successful
+        saveButton.setEnabled(false);
+        saveButton.setAlpha(0.5f);
 
-        // Set up image selection
+        // Set up image selection button
         selectImageButton.setOnClickListener(v -> checkPermissionAndPickImage());
+        // Set up save button (only enabled after image upload)
         saveButton.setOnClickListener(v -> saveListing());
     }
 
@@ -136,6 +136,8 @@ public class AddListingActivity extends AppCompatActivity {
 
     private void uploadImageToImgur(Uri imageUri) {
         try {
+            // Upload the selected image to Imgur using Retrofit
+            // On success, store the image URL and enable the Save Listing button
             // Create a temporary file from the URI
             File imageFile = createTempFileFromUri(imageUri);
             
@@ -170,10 +172,13 @@ public class AddListingActivity extends AppCompatActivity {
                                      @NonNull Response<ImgurApi.ImgurResponse> response) {
                     if (response.isSuccessful() && response.body() != null && response.body().success) {
                         uploadedImageUrl = response.body().data.link;
-                        runOnUiThread(() -> 
+                        runOnUiThread(() -> {
                             Toast.makeText(AddListingActivity.this,
-                                "Image uploaded successfully!", Toast.LENGTH_SHORT).show()
-                        );
+                                "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
+                            // Enable the Save Listing button after successful image upload
+                            saveButton.setEnabled(true);
+                            saveButton.setAlpha(1f);
+                        });
                     } else {
                         runOnUiThread(() -> 
                             Toast.makeText(AddListingActivity.this,
@@ -213,37 +218,34 @@ public class AddListingActivity extends AppCompatActivity {
     }
 
     private void saveListing() {
+        // Gather all input data and create a Listing object
         String name = nameInput.getText().toString().trim();
         String breed = breedInput.getText().toString().trim();
         String age = ageInput.getText().toString().trim();
         String description = descriptionInput.getText().toString().trim();
-        String ownerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String ownerId = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         if (name.isEmpty() || breed.isEmpty() || age.isEmpty() || description.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        Map<String, Object> listing = new HashMap<>();
-        listing.put("name", name);
-        listing.put("breed", breed);
-        listing.put("age", age);
-        listing.put("description", description);
-        listing.put("ownerId", ownerId);
-        listing.put("timestamp", FieldValue.serverTimestamp());
-        
-        // Add image URL if available
-        if (uploadedImageUrl != null) {
-            listing.put("imageUrl", uploadedImageUrl);
+        if (uploadedImageUrl == null || uploadedImageUrl.isEmpty()) {
+            Toast.makeText(this, "Please upload an image first.", Toast.LENGTH_SHORT).show();
+            return;
         }
+        // Create a new Listing object with all fields
+        Listing listing = new Listing();
+        listing.name = name;
+        listing.breed = breed;
+        listing.age = age;
+        listing.description = description;
+        listing.ownerId = ownerId;
+        listing.imageUrl = uploadedImageUrl;
+        listing.timestamp = null; // Not used in memory version
 
-        db.collection("listings").add(listing)
-            .addOnSuccessListener(docRef -> {
-                Toast.makeText(this, "Pet listing added successfully!", Toast.LENGTH_SHORT).show();
-                finish();
-            })
-            .addOnFailureListener(e -> {
-                Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            });
+        // Add to ListingManager (in-memory list)
+        ListingManager.getInstance().addListing(listing);
+        Toast.makeText(this, "Pet listing added successfully!", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

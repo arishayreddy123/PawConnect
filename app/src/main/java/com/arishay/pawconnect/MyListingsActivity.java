@@ -4,8 +4,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +12,6 @@ public class MyListingsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ListingAdapter adapter;
     List<Listing> listingList = new ArrayList<>();
-    FirebaseFirestore db;
-    String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +23,12 @@ public class MyListingsActivity extends AppCompatActivity {
         adapter = new ListingAdapter(listingList);
         recyclerView.setAdapter(adapter);
 
-        db = FirebaseFirestore.getInstance();
-        currentUserId = FirebaseAuth.getInstance().getUid();
-
-        db.collection("listings")
-                .whereEqualTo("ownerId", currentUserId)
-                .get()
-                .addOnSuccessListener(query -> {
-                    for (DocumentSnapshot doc : query.getDocuments()) {
-                        Listing pet = doc.toObject(Listing.class);
-                        pet.id = doc.getId();
-                        listingList.add(pet);
-                    }
-                    adapter.notifyDataSetChanged();
-                });
+        // Load listings owned by the current user from ListingManager (in-memory singleton)
+        // This avoids any use of Firestore or external DBs.
+        // Only listings created during this app session by this user will be shown.
+        String currentUserId = com.google.firebase.auth.FirebaseAuth.getInstance().getUid();
+        listingList.clear();
+        listingList.addAll(ListingManager.getInstance().getListingsByOwner(currentUserId));
+        adapter.notifyDataSetChanged();
     }
 }

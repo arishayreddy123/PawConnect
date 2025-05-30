@@ -92,43 +92,34 @@ public class AdopterBrowseActivity extends AppCompatActivity {
     }
 
     private void fetchListings() {
-        FirebaseFirestore.getInstance().collection("listings")
-                .get()
-                .addOnSuccessListener(query -> {
-                    allListings.clear();
-                    Set<String> breeds = new HashSet<>();
-                    Set<String> ages = new HashSet<>();
+        // Load all listings from ListingManager (in-memory singleton)
+        // This avoids any use of Firestore or external DBs.
+        allListings.clear();
+        allListings.addAll(ListingManager.getInstance().getAllListings());
 
-                    for (DocumentSnapshot doc : query.getDocuments()) {
-                        Listing l = doc.toObject(Listing.class);
-                        l.id = doc.getId();
-                        allListings.add(l);
+        // Collect unique breed and age options for filtering
+        Set<String> breeds = new HashSet<>();
+        Set<String> ages = new HashSet<>();
+        for (Listing l : allListings) {
+            if (l.breed != null) breeds.add(l.breed);
+            if (l.age != null) ages.add(l.age);
+        }
 
-                        if (l.breed != null) breeds.add(l.breed);
-                        if (l.age != null) ages.add(l.age);
-                    }
+        // No need to sort by timestamp in memory version
 
-                    // Sort by newest (timestamp)
-                    Collections.sort(allListings, (a, b) -> {
-                        Timestamp ta = a.timestamp;
-                        Timestamp tb = b.timestamp;
-                        if (ta == null || tb == null) return 0;
-                        return tb.compareTo(ta); // Newest first
-                    });
+        breedOptions.clear();
+        breedOptions.add("All");
+        breedOptions.addAll(breeds);
 
-                    breedOptions.clear();
-                    breedOptions.add("All");
-                    breedOptions.addAll(breeds);
+        ageOptions.clear();
+        ageOptions.add("All");
+        ageOptions.addAll(ages);
 
-                    ageOptions.clear();
-                    ageOptions.add("All");
-                    ageOptions.addAll(ages);
+        breedSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, breedOptions));
+        ageSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ageOptions));
 
-                    breedSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, breedOptions));
-                    ageSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ageOptions));
-
-                    applyFilters();
-                });
+        // Apply filters to show only matching listings
+        applyFilters();
     }
 
     private void applyFilters() {
