@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:padding="24dp"
     android:background="#ff009d"
     android:clipToPadding="false">
 
-    <!-- Header Icon or Logo -->
+    <!-- Logo -->
     <ImageView
+        android:id="@+id/logoImage"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/logo"
         android:contentDescription="App Logo"
-        android:layout_marginBottom="24dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/logo"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
 
     <!-- Welcome Text -->
     <TextView
         android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="🐶 Welcome, Rescuer! 🐾"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:layout_marginBottom="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_below="@id/logoImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp" />
 
     <!-- Add Listing Button -->
     <Button
         android:id="@+id/addListingButton"
-        android:text="🆕 Add New Pet Listing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="🆕 Add New Pet Listing"
         android:backgroundTint="#FFEB3B"
         android:textColor="#000000"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:layout_marginBottom="16dp"
+        android:layout_below="@id/welcomeText"
+        android:layout_marginBottom="12dp"
         android:elevation="4dp" />
 
     <!-- View Listings Button -->
     <Button
         android:id="@+id/viewListingsButton"
-        android:text="📁 View My Listings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="📁 View My Listings"
         android:backgroundTint="#FFFFFF"
         android:textColor="#ff009d"
         android:textStyle="bold"
         android:textSize="16sp"
+        android:layout_below="@id/addListingButton"
+        android:layout_marginBottom="12dp"
         android:elevation="4dp" />
 
-
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requestsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/viewListingsButton"
+        android:layout_above="@id/footerNavigation"
         android:clipToPadding="false"
-        android:padding="8dp"/>
+        android:padding="8dp" />
 
+    <!-- Sticky Footer -->
+    <include
+        android:id="@+id/footerNavigation"
+        layout="@layout/footer_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
-</LinearLayout>
+</RelativeLayout>

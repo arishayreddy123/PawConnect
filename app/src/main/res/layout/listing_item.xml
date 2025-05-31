@@ -97,7 +97,13 @@
                 android:backgroundTint="#FFFFFF"
                 android:layout_marginStart="10dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Favorite" />
+                android:contentDescription="Favorite"
+              />
         </LinearLayout>
+
+
     </LinearLayout>
+
+
+
 </androidx.cardview.widget.CardView>

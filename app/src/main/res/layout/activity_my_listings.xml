@@ -1,45 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ff009d"
     android:padding="20dp">
 
+    <!-- Title -->
     <TextView
+        android:id="@+id/listingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="✨ My Pet Listings ✨"
         android:textSize="26sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:layout_centerHorizontal="true" />
 
+    <!-- Yellow Line -->
     <View
+        android:id="@+id/yellowDivider"
         android:layout_width="60dp"
         android:layout_height="4dp"
-        android:layout_gravity="center"
+        android:layout_below="@id/listingsTitle"
+        android:layout_centerHorizontal="true"
         android:background="#FFEB3B"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
+    <!-- RecyclerView (purple scroll area) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listingsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp"
+        android:layout_below="@id/yellowDivider"
+        android:layout_above="@id/funTagline"
         android:clipToPadding="false"
+        android:padding="8dp"
+        android:background="#673AB7"
         android:scrollbars="vertical"
-        android:background="#673AB7" />
+        />
 
+
+    <!-- Cute tagline -->
     <TextView
+        android:id="@+id/funTagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="🐾 Swipe through to meet your furry friends!"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textStyle="italic" />
-</LinearLayout>
+        android:textStyle="italic"
+        android:layout_above="@id/footerNavigation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"/>
+
+
+    <!-- Footer (fixed at bottom) -->
+    <include
+        android:id="@+id/footerNavigation"
+        layout="@layout/footer_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

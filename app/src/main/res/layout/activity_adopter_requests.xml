@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff009d">
+    android:background="#ff009d"
+    android:padding="16dp">
 
+    <!-- Header Text -->
     <TextView
+        android:id="@+id/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="My Adoption Requests"
         android:textSize="30sp"
-        android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/accentYellow"
-        android:layout_marginBottom="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp" />
 
+    <!-- RecyclerView for requests -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myRequestsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false"/>
-</LinearLayout>
+        android:layout_height="0dp"
+        android:layout_below="@id/headerText"
+        android:layout_above="@id/footerNavigation"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Footer navigation included and fixed at bottom -->
+    <include
+        android:id="@+id/footerNavigation"
+        layout="@layout/footer_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

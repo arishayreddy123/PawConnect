@@ -80,6 +80,13 @@
             android:backgroundTint="#FFEB3B"
             android:textSize="18sp"
             android:layout_marginTop="10dp"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:layout_marginBottom="160dp"/>
+
+        <include layout="@layout/footer_navigation"/>
+
     </LinearLayout>
+
+
+
 </ScrollView>

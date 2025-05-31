@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="#ff009d">
 
+    <!-- Header Title -->
     <TextView
+        android:id="@+id/headerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Available Pets"
         android:textSize="50sp"
-        android:layout_gravity="center"
-        android:textColor="@color/accentYellow"
         android:textStyle="bold"
-        android:layout_marginBottom="50dp" />
+        android:textColor="@color/accentYellow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/adopterRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false"/>
-</LinearLayout>
+        android:layout_height="0dp"
+        android:layout_below="@id/headerTitle"
+        android:layout_above="@id/footerNavigation"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Footer navigation -->
+    <include
+        android:id="@+id/footerNavigation"
+        layout="@layout/footer_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

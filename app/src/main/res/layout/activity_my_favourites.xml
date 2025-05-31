@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#ff009d"
     android:padding="20dp">
 
     <!-- Title -->
     <TextView
+        android:id="@+id/favTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your Heart's Picks 💕"
@@ -19,20 +19,32 @@
 
     <!-- Subtitle -->
     <TextView
+        android:id="@+id/favSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="A gallery of paws you've fallen for 🐾"
         android:textSize="16sp"
         android:textColor="#FFEB3B"
         android:gravity="center"
-        android:layout_marginBottom="18dp" />
+        android:layout_below="@id/favTitle"
+        android:layout_marginBottom="12dp" />
 
     <!-- Favourite Pets RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFavourites"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_below="@id/favSubtitle"
+        android:layout_above="@id/footerNavigation"
         android:clipToPadding="false"
         android:padding="6dp" />
-</LinearLayout>
+
+    <!-- Footer -->
+    <include
+        android:id="@+id/footerNavigation"
+        layout="@layout/footer_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
