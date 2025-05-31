@@ -3,6 +3,8 @@ package com.arishay.pawconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView goToRegister;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
+    private ImageView logoImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,19 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
         goToRegister = findViewById(R.id.signUpButton);
+        logoImage = findViewById(R.id.imageView);
+
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+
+        logoImage.postDelayed(() -> {
+            Animation bounceAnim = AnimationUtils.loadAnimation(this, R.anim.logo_bounce);
+            logoImage.startAnimation(bounceAnim);
+        }, 300);
+
+
 
         loginButton.setOnClickListener(v -> loginUser());
 
