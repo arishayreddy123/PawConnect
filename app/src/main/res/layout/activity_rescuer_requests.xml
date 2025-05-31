@@ -15,7 +15,7 @@
         android:src="@drawable/logo"
         android:contentDescription="App Logo"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/white_circle_background"
+        android:background="@drawable/logo"
         android:padding="10dp" />
 
     <!-- Welcome Text -->
@@ -53,5 +53,14 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:elevation="4dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/requestsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="8dp"/>
+
 
 </LinearLayout>

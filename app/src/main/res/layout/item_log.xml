@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:textSize="14sp"
-    android:textColor="#000000"
-    android:background="#EEEEEE"
+    android:textColor="#FFF7F7"
+    android:background="#ff009d"
     android:layout_marginBottom="8dp"
     android:text="Sample log entry" />
