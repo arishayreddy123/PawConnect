@@ -1,6 +1,7 @@
 package com.arishay.pawconnect;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -21,6 +22,7 @@ public class AdopterActivity extends AppCompatActivity {
         TextView welcomeText = new TextView(this);
         welcomeText.setText("Welcome, Adopter!");
         welcomeText.setTextSize(20f);
+        layout.setBackgroundColor(Color.parseColor("#ff009d"));
         layout.addView(welcomeText);
 
         // Button: Browse Pets
