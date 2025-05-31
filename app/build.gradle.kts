@@ -46,6 +46,9 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
+    implementation ("com.google.android.material:material:1.11.0") // or latest version
+
+
     // ✅ Image loading and processing
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
@@ -59,4 +62,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+
 }

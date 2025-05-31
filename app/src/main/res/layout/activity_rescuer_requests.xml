@@ -1,19 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:background="#ff009d"
+    android:clipToPadding="false">
 
+    <!-- Header Icon or Logo -->
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        android:contentDescription="App Logo"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/white_circle_background"
+        android:padding="10dp" />
+
+    <!-- Welcome Text -->
     <TextView
-        android:text="Adoption Requests"
-        android:textSize="24sp"
+        android:id="@+id/welcomeText"
+        android:text="🐶 Welcome, Rescuer! 🐾"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/requestsRecyclerView"
+    <!-- Add Listing Button -->
+    <Button
+        android:id="@+id/addListingButton"
+        android:text="🆕 Add New Pet Listing"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp" />
+
+    <!-- View Listings Button -->
+    <Button
+        android:id="@+id/viewListingsButton"
+        android:text="📁 View My Listings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#ff009d"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:elevation="4dp" />
+
 </LinearLayout>

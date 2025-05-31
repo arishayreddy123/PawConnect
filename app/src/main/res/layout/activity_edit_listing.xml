@@ -2,44 +2,84 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ff009d"
     android:padding="24dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Pet Listing"
+            android:textColor="@android:color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
 
         <EditText
             android:id="@+id/nameEditText"
             android:hint="Pet Name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/white"/>
 
         <EditText
             android:id="@+id/breedEditText"
             android:hint="Breed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/white"/>
 
         <EditText
             android:id="@+id/ageEditText"
             android:hint="Age"
             android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/white"/>
 
         <EditText
             android:id="@+id/descriptionEditText"
             android:hint="Description"
             android:minLines="3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:padding="14dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@android:color/white"/>
 
         <Button
             android:id="@+id/updateButton"
             android:text="Update Listing"
+            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:textColor="#ff009d"
+            android:backgroundTint="#FFEB3B"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:padding="12dp"/>
     </LinearLayout>
 </ScrollView>
