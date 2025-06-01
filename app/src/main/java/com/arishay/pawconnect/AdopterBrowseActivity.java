@@ -94,34 +94,38 @@ public class AdopterBrowseActivity extends AppCompatActivity {
     }
 
     private void fetchListings() {
-        // Load all listings from ListingManager (in-memory singleton)
-        // This avoids any use of Firestore or external DBs.
+        // Load all listings from Firestore
         allListings.clear();
-        allListings.addAll(ListingManager.getInstance().getAllListings());
-
-        // Collect unique breed and age options for filtering
-        Set<String> breeds = new HashSet<>();
-        Set<String> ages = new HashSet<>();
-        for (Listing l : allListings) {
-            if (l.breed != null) breeds.add(l.breed);
-            if (l.age != null) ages.add(l.age);
-        }
-
-        // No need to sort by timestamp in memory version
-
-        breedOptions.clear();
-        breedOptions.add("All");
-        breedOptions.addAll(breeds);
-
-        ageOptions.clear();
-        ageOptions.add("All");
-        ageOptions.addAll(ages);
-
-        breedSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, breedOptions));
-        ageSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ageOptions));
-
-        // Apply filters to show only matching listings
-        applyFilters();
+        FirebaseFirestore.getInstance().collection("listings")
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    Listing l = doc.toObject(Listing.class);
+                    if (l != null) {
+                        l.id = doc.getId(); // Set the Firestore document ID
+                        allListings.add(l);
+                    }
+                }
+                // Collect unique breed and age options for filtering
+                Set<String> breeds = new HashSet<>();
+                Set<String> ages = new HashSet<>();
+                for (Listing l : allListings) {
+                    if (l.breed != null) breeds.add(l.breed);
+                    if (l.age != null) ages.add(l.age);
+                }
+                breedOptions.clear();
+                breedOptions.add("All");
+                breedOptions.addAll(breeds);
+                ageOptions.clear();
+                ageOptions.add("All");
+                ageOptions.addAll(ages);
+                breedSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, breedOptions));
+                ageSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ageOptions));
+                applyFilters();
+            })
+            .addOnFailureListener(e -> {
+                Toast.makeText(this, "Failed to load listings from Firestore.", Toast.LENGTH_SHORT).show();
+            });
     }
 
     private void applyFilters() {
