@@ -16,18 +16,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PawConnect"
-
-
         tools:targetApi="31">
 
+        <!-- Splash Screen Activity -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PawConnect.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login Activity (no longer the launcher) -->
+        <activity 
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <!-- Other activities -->
         <activity android:name=".RegisterActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".RescuerActivity" />
@@ -40,29 +47,10 @@
         <activity android:name=".AdopterRequestsActivity" />
         <activity android:name=".AdopterBrowseActivity" />
         <activity android:name=".MyFavouritesActivity" />
-
-
         <activity android:name=".AdminHomeActivity" />
         <activity android:name=".AdminUserActivity" />
         <activity android:name=".AdminAddUserActivity" />
-
         <activity android:name=".AdminLogsActivity" />
-
         <activity android:name=".AdminDashboardActivity" />
-
-
-
-
-
-
-
-
-
-
-
-
     </application>
-
-
-
 </manifest>

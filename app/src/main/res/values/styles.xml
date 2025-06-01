@@ -53,7 +53,10 @@
             <item name="android:padding">12dp</item>
         </style>
 
-
-
+    <!-- NoActionBar Theme for Splash Screen -->
+    <style name="Theme.PawConnect.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 </resources>
