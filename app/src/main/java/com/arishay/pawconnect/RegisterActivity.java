@@ -28,13 +28,20 @@ public class RegisterActivity extends AppCompatActivity {
         roleSpinner = findViewById(R.id.roleSpinner);
         registerButton = findViewById(R.id.registerButton);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.roles_array,
+                R.layout.spinner_item_white
+        );
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_pink);
+
+        roleSpinner.setAdapter(adapter);
+
+
+
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.roles_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        roleSpinner.setAdapter(adapter);
 
         registerButton.setOnClickListener(v -> registerUser());
 
