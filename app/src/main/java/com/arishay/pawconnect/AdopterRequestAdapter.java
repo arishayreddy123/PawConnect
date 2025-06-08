@@ -31,7 +31,10 @@ public class AdopterRequestAdapter extends RecyclerView.Adapter<AdopterRequestAd
     public AdopterRequestAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.request_item_adopter, parent, false);
+
+
         return new ViewHolder(view);
+
     }
 
     @Override

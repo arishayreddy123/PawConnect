@@ -30,6 +30,8 @@ public class MyFavouritesActivity extends AppCompatActivity {
         adopterId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         loadFavourites();
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     private void loadFavourites() {

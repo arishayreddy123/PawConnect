@@ -37,6 +37,8 @@ public class RegisterActivity extends AppCompatActivity {
         roleSpinner.setAdapter(adapter);
 
         registerButton.setOnClickListener(v -> registerUser());
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     void registerUser() {

@@ -47,5 +47,7 @@ public class AdopterActivity extends AppCompatActivity {
         layout.addView(myFavouritesBtn);
 
         setContentView(layout);
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 }

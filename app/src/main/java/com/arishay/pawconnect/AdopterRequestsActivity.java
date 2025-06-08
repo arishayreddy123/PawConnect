@@ -38,5 +38,6 @@ public class AdopterRequestsActivity extends AppCompatActivity {
                     adapter = new AdopterRequestAdapter(requestList);
                     recyclerView.setAdapter(adapter);
                 });
+        FooterNavigation.setupFooterNavigation(this);
     }
 }

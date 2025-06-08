@@ -30,5 +30,8 @@ public class MyListingsActivity extends AppCompatActivity {
         listingList.clear();
         listingList.addAll(ListingManager.getInstance().getListingsByOwner(currentUserId));
         adapter.notifyDataSetChanged();
+
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 }

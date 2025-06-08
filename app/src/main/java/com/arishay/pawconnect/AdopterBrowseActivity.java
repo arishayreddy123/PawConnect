@@ -91,6 +91,8 @@ public class AdopterBrowseActivity extends AppCompatActivity {
             if (!breedOptions.isEmpty()) breedSpinner.setSelection(0);
             if (!ageOptions.isEmpty()) ageSpinner.setSelection(0);
         });
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     private void fetchListings() {

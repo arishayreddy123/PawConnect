@@ -98,6 +98,8 @@ public class RescuerActivity extends AppCompatActivity {
         layout.addView(footer);
 
         setContentView(layout);
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     private Button createStyledButton(String text, int bgColor) {

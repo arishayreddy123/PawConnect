@@ -38,5 +38,7 @@ public class RescuerRequestsActivity extends AppCompatActivity {
                     adapter = new RequestAdapter(requestList);
                     recyclerView.setAdapter(adapter);
                 });
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 }

@@ -90,6 +90,8 @@ public class AddListingActivity extends AppCompatActivity {
         selectImageButton.setOnClickListener(v -> checkPermissionAndPickImage());
         // Set up save button (only enabled after image upload)
         saveButton.setOnClickListener(v -> saveListing());
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     private void checkPermissionAndPickImage() {

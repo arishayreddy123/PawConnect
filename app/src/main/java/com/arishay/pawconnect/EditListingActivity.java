@@ -36,6 +36,8 @@ public class EditListingActivity extends AppCompatActivity {
         descriptionEditText.setText(getIntent().getStringExtra("description"));
 
         updateButton.setOnClickListener(v -> updateListing());
+
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     void updateListing() {

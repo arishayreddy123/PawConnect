@@ -1,83 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hotPink">
+    android:background="#ff009d">
 
-    <!-- Scrollable Content -->
+    <!-- Scrollable Profile Content -->
     <ScrollView
-        android:id="@+id/scrollContent"
+        android:id="@+id/scrollContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/footerNavigation"
-        android:layout_alignParentTop="true">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:orientation="vertical">
 
-            <!-- Logo -->
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                app:srcCompat="@drawable/logo"
-                android:layout_marginBottom="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Profile"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp" />
 
-            <!-- Name -->
             <EditText
                 android:id="@+id/nameEditText"
-                style="@style/CustomEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
+                android:background="@android:drawable/edit_text"
+                android:padding="10dp"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Email -->
             <EditText
                 android:id="@+id/emailEditText"
-                style="@style/CustomEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:inputType="textEmailAddress"
+                android:background="@android:drawable/edit_text"
+                android:padding="10dp"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Password -->
             <EditText
                 android:id="@+id/passwordEditText"
-                style="@style/CustomEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="Current Password (only if changing email)"
+                android:background="@android:drawable/edit_text"
+                android:padding="10dp"
                 android:inputType="textPassword"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="24dp" />
 
-            <!-- Role Spinner -->
-            <Spinner
-                android:id="@+id/roleSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:spinnerMode="dropdown"
-                android:backgroundTint="@color/white" />
-
-            <!-- Register Button -->
             <Button
-                android:id="@+id/registerButton"
-                style="@style/CustomButton"
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Register"
-                android:layout_marginBottom="32dp"/>
+                android:text="Update Profile"
+                android:background="@color/accentYellow"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/forgotPasswordButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:background="#FFD700"
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </ScrollView>
 
-    <!-- Footer always at the bottom -->
+    <!-- Sticky Footer -->
     <include
         android:id="@+id/footerNavigation"
         layout="@layout/footer_navigation"
