@@ -61,6 +61,9 @@ public class AdminUserActivity extends AppCompatActivity {
         });
 
         loadUsers();
+
+        // Setup footer navigation
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     private void loadUsers() {

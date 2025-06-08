@@ -223,11 +223,20 @@ public class AddListingActivity extends AppCompatActivity {
         // Gather all input data and create a Listing object
         String name = nameInput.getText().toString().trim();
         String breed = breedInput.getText().toString().trim();
-        String age = ageInput.getText().toString().trim();
+        String ageStr = ageInput.getText().toString().trim();
+        Long age = null;
+        if (!ageStr.isEmpty()) {
+            try {
+                age = Long.parseLong(ageStr);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Age must be a number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
         String description = descriptionInput.getText().toString().trim();
         String ownerId = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        if (name.isEmpty() || breed.isEmpty() || age.isEmpty() || description.isEmpty()) {
+        if (name.isEmpty() || breed.isEmpty() || ageStr.isEmpty() || description.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             return;
         }

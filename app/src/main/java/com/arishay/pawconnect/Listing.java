@@ -6,7 +6,7 @@ public class Listing {
     public String id;
     public String name;
     public String breed;
-    public String age;
+    public Long age;
     public String description;
     public String ownerId;
     public Timestamp timestamp;

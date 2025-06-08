@@ -8,7 +8,7 @@
 
     <!-- Header -->
     <TextView
-        android:text="System Logs"
+        android:text="Manage Listings"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/accentYellow"
@@ -32,17 +32,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Spinner
-                android:id="@+id/logTypeSpinner"
+            <EditText
+                android:id="@+id/searchInput"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white" />
+                android:hint="Search listings..."
+                android:background="@android:color/white"
+                android:padding="8dp" />
 
             <Spinner
-                android:id="@+id/dateFilterSpinner"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:id="@+id/statusFilterSpinner"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@android:color/white" />
@@ -64,4 +65,4 @@
         layout="@layout/footer_navigation_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-</LinearLayout>
+</LinearLayout> 

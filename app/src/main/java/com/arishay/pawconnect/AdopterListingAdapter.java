@@ -55,7 +55,7 @@ public class AdopterListingAdapter extends RecyclerView.Adapter<AdopterListingAd
 
         holder.name.setText("Name: " + pet.name);
         holder.breed.setText("Breed: " + pet.breed);
-        holder.age.setText("Age: " + pet.age);
+        holder.age.setText("Age: " + (pet.age != null ? pet.age.toString() : ""));
         holder.description.setText("Description: " + pet.description);
         holder.statusText.setText("");
 

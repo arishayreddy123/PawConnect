@@ -53,8 +53,7 @@
         <activity android:name=".AdminLogsActivity" />
         <activity android:name=".AdminDashboardActivity" />
         <activity android:name=".UserProfileActivity" />
-        <activity android:name=".FavouritePetsActivity" />
-
+        <activity android:name=".AdminListingsActivity" />
 
     </application>
 </manifest>

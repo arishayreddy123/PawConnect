@@ -26,7 +26,7 @@ public class AdopterActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AdopterRequestsActivity.class)));
 
         favouritePetsBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, FavouritePetsActivity.class)));
+                startActivity(new Intent(this, MyFavouritesActivity.class)));
 
         FooterNavigation.setupFooterNavigation(this);
     }

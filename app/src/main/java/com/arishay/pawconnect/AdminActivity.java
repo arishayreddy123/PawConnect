@@ -26,6 +26,9 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         loadAllListings();
+
+        // Setup footer navigation
+        FooterNavigation.setupFooterNavigation(this);
     }
 
     private void loadAllListings() {

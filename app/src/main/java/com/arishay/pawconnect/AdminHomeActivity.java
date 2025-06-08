@@ -21,10 +21,10 @@ public class AdminHomeActivity extends AppCompatActivity {
         viewLogsBtn = findViewById(R.id.viewLogsBtn);
 
         manageListingsBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminActivity.class)));
+                startActivity(new Intent(this, AdminListingsActivity.class)));
 
         manageUsersBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, AdminUserActivity.class)));
+                startActivity(new Intent(this, AdminUsersActivity.class)));
 
         addUserBtn.setOnClickListener(v ->
                 startActivity(new Intent(this, AdminAddUserActivity.class)));
@@ -34,5 +34,8 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         viewLogsBtn.setOnClickListener(v ->
                 startActivity(new Intent(this, AdminLogsActivity.class)));  // make sure this activity exists
+
+        // Setup admin footer navigation
+        AdminFooterNavigation.setupFooterNavigation(this);
     }
 }

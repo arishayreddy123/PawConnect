@@ -30,6 +30,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         loadUserStats();
         loadRequestStats();
+
+        // Setup admin footer navigation
+        AdminFooterNavigation.setupFooterNavigation(this);
     }
 
     private void loadUserStats() {

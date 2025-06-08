@@ -44,7 +44,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         Listing pet = listings.get(position);
         holder.name.setText("Name: " + pet.name);
         holder.breed.setText("Breed: " + pet.breed);
-        holder.age.setText("Age: " + pet.age);
+        holder.age.setText("Age: " + (pet.age != null ? pet.age.toString() : ""));
         holder.description.setText("Description: " + pet.description);
 
         holder.deleteButton.setOnClickListener(v -> {

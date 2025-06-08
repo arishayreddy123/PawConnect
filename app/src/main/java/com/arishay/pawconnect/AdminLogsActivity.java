@@ -32,7 +32,10 @@ public class AdminLogsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_logs);
 
-        recyclerView = findViewById(R.id.logsRecyclerView);
+        // Set up footer navigation
+        AdminFooterNavigation.setupFooterNavigation(this);
+
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LogAdapter(logs);
         recyclerView.setAdapter(adapter);

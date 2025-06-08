@@ -43,10 +43,19 @@ public class EditListingActivity extends AppCompatActivity {
     void updateListing() {
         String name = nameEditText.getText().toString().trim();
         String breed = breedEditText.getText().toString().trim();
-        String age = ageEditText.getText().toString().trim();
+        String ageStr = ageEditText.getText().toString().trim();
+        Long age = null;
+        if (!ageStr.isEmpty()) {
+            try {
+                age = Long.parseLong(ageStr);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Age must be a number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
         String description = descriptionEditText.getText().toString().trim();
 
-        if (name.isEmpty() || breed.isEmpty() || age.isEmpty() || description.isEmpty()) {
+        if (name.isEmpty() || breed.isEmpty() || ageStr.isEmpty() || description.isEmpty()) {
             Toast.makeText(this, "All fields required", Toast.LENGTH_SHORT).show();
             return;
         }

@@ -113,7 +113,7 @@ public class AdopterBrowseActivity extends AppCompatActivity {
                 Set<String> ages = new HashSet<>();
                 for (Listing l : allListings) {
                     if (l.breed != null) breeds.add(l.breed);
-                    if (l.age != null) ages.add(l.age);
+                    if (l.age != null) ages.add(l.age.toString());
                 }
                 breedOptions.clear();
                 breedOptions.add("All");
@@ -146,7 +146,7 @@ public class AdopterBrowseActivity extends AppCompatActivity {
             if (!"All".equals(selectedBreed) && (l.breed == null || !l.breed.equals(selectedBreed))) {
                 match = false;
             }
-            if (!"All".equals(selectedAge) && (l.age == null || !l.age.equals(selectedAge))) {
+            if (!"All".equals(selectedAge) && (l.age == null || !selectedAge.equals(l.age.toString()))) {
                 match = false;
             }
 
