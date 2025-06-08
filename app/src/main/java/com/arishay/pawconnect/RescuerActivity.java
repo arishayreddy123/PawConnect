@@ -43,7 +43,7 @@ public class RescuerActivity extends AppCompatActivity {
 
         // Tagline
         TextView tagline = new TextView(this);
-        tagline.setText("You're the hero they’ve been waiting for 💞");
+        tagline.setText("You're the hero they've been waiting for 💞");
         tagline.setTextSize(18);
         tagline.setTextColor(Color.WHITE);
         tagline.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
@@ -90,7 +90,7 @@ public class RescuerActivity extends AppCompatActivity {
 
         // Footer quote
         TextView footer = new TextView(this);
-        footer.setText("“Saving lives, one paw at a time.” 🐾");
+        footer.setText("\"Saving lives, one paw at a time.\" 🐾");
         footer.setTextSize(14);
         footer.setTextColor(Color.WHITE);
         footer.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
@@ -98,6 +98,9 @@ public class RescuerActivity extends AppCompatActivity {
         layout.addView(footer);
 
         setContentView(layout);
+
+        // Add the footer navigation at the bottom
+        getLayoutInflater().inflate(R.layout.footer_navigation, layout, true);
 
         FooterNavigation.setupFooterNavigation(this);
     }

@@ -254,9 +254,15 @@ public class AddListingActivity extends AppCompatActivity {
         listing.imageUrl = uploadedImageUrl;
         listing.timestamp = null; // Not used in memory version
 
-        // Add to ListingManager (in-memory list)
-        ListingManager.getInstance().addListing(listing);
-        Toast.makeText(this, "Pet listing added successfully!", Toast.LENGTH_SHORT).show();
-        finish();
+        // Save to Firestore
+        com.google.firebase.firestore.FirebaseFirestore.getInstance().collection("listings")
+            .add(listing)
+            .addOnSuccessListener(documentReference -> {
+                Toast.makeText(this, "Pet listing added successfully!", Toast.LENGTH_SHORT).show();
+                finish();
+            })
+            .addOnFailureListener(e -> {
+                Toast.makeText(this, "Failed to add listing: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
     }
 }

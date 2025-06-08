@@ -18,12 +18,11 @@
         <ImageView
             android:id="@+id/petImageView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:scaleType="centerCrop"
             android:contentDescription="Pet Image"
             android:background="#FFFFFF"
             android:layout_marginBottom="10dp"
-            android:adjustViewBounds="true"
             android:padding="4dp" />
 
         <TextView
