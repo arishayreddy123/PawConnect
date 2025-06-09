@@ -3,108 +3,114 @@ package com.arishay.pawconnect;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class RescuerActivity extends AppCompatActivity {
+public class RescuerActivity extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(32, 32, 32, 32);
-        layout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        ));
-        layout.setBackgroundColor(Color.parseColor("#ff009d")); // Vibrant pink
+        // Root layout
+        RelativeLayout rootLayout = new RelativeLayout(this);
+        rootLayout.setBackgroundColor(Color.parseColor("#ff009d"));
 
-        // Logo (large)
-        ImageView logo = new ImageView(this);
-        logo.setImageResource(R.drawable.logo); // Make sure this exists
-        LinearLayout.LayoutParams logoParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                500
+        // Scrollable content area
+        ScrollView scrollView = new ScrollView(this);
+        scrollView.setId(View.generateViewId());  // Unique ID for layout rules
+        RelativeLayout.LayoutParams scrollParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT
         );
-        logo.setLayoutParams(logoParams);
-        layout.addView(logo);
+        scrollParams.addRule(RelativeLayout.ABOVE, R.id.footerNavigation);
 
-        // Welcome text
+        LinearLayout contentLayout = new LinearLayout(this);
+        contentLayout.setOrientation(LinearLayout.VERTICAL);
+        contentLayout.setPadding(32, 32, 32, 32);
+        scrollView.addView(contentLayout);
+
+        // --- Add content to contentLayout ---
+        ImageView logo = new ImageView(this);
+        logo.setImageResource(R.drawable.logo);
+        logo.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 500
+        ));
+        contentLayout.addView(logo);
+
         TextView welcomeText = new TextView(this);
         welcomeText.setText("🐾 Welcome, Rescuer! 🐶");
         welcomeText.setTextSize(28);
         welcomeText.setTextColor(Color.WHITE);
-        welcomeText.setPadding(0, 40, 0, 28);
         welcomeText.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-        layout.addView(welcomeText);
+        welcomeText.setPadding(0, 40, 0, 28);
+        contentLayout.addView(welcomeText);
 
-        // Tagline
         TextView tagline = new TextView(this);
         tagline.setText("You're the hero they've been waiting for 💞");
         tagline.setTextSize(18);
         tagline.setTextColor(Color.WHITE);
         tagline.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-        layout.addView(tagline);
+        contentLayout.addView(tagline);
 
-        // Emoji divider
         TextView divider = new TextView(this);
         divider.setText("🐕‍🦺 🐾 🐈‍⬛ 🐾 🐩");
         divider.setTextSize(22);
         divider.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
         divider.setPadding(0, 30, 0, 30);
-        layout.addView(divider);
+        contentLayout.addView(divider);
 
-        // Button layout params
         LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         btnParams.setMargins(0, 20, 0, 20);
-
-        // Button color
         int softYellow = Color.parseColor("#FFD54F");
 
-        // Add New Listing
         Button addListingBtn = createStyledButton("➕ Add New Pet Listing", softYellow);
-        addListingBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, AddListingActivity.class))
-        );
-        layout.addView(addListingBtn, btnParams);
+        addListingBtn.setOnClickListener(v -> startActivity(new Intent(this, AddListingActivity.class)));
+        contentLayout.addView(addListingBtn, btnParams);
 
-        // View Listings
         Button viewListingsBtn = createStyledButton("📋 View My Listings", softYellow);
-        viewListingsBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, MyListingsActivity.class))
-        );
-        layout.addView(viewListingsBtn, btnParams);
+        viewListingsBtn.setOnClickListener(v -> startActivity(new Intent(this, MyListingsActivity.class)));
+        contentLayout.addView(viewListingsBtn, btnParams);
 
-        // View Requests
         Button viewRequestsBtn = createStyledButton("📨 View Adoption Requests", softYellow);
-        viewRequestsBtn.setOnClickListener(v ->
-                startActivity(new Intent(this, RescuerRequestsActivity.class))
+        viewRequestsBtn.setOnClickListener(v -> startActivity(new Intent(this, RescuerRequestsActivity.class)));
+        contentLayout.addView(viewRequestsBtn, btnParams);
+
+        TextView footerQuote = new TextView(this);
+        footerQuote.setText("\"Saving lives, one paw at a time.\" 🐾");
+        footerQuote.setTextSize(14);
+        footerQuote.setTextColor(Color.WHITE);
+        footerQuote.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+        footerQuote.setPadding(0, 50, 0, 0);
+        contentLayout.addView(footerQuote);
+
+        rootLayout.addView(scrollView, scrollParams);
+
+        // --- Footer (inflated at the bottom) ---
+        FrameLayout footerContainer = new FrameLayout(this);
+        footerContainer.setId(R.id.footerNavigation);  // Must match the scroll above
+        RelativeLayout.LayoutParams footerParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
         );
-        layout.addView(viewRequestsBtn, btnParams);
+        footerParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
-        // Footer quote
-        TextView footer = new TextView(this);
-        footer.setText("\"Saving lives, one paw at a time.\" 🐾");
-        footer.setTextSize(14);
-        footer.setTextColor(Color.WHITE);
-        footer.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-        footer.setPadding(0, 50, 0, 0);
-        layout.addView(footer);
+        getLayoutInflater().inflate(R.layout.footer_navigation, footerContainer, true);
+        rootLayout.addView(footerContainer, footerParams);
 
-        setContentView(layout);
+        // Set the layout
+        setContentView(rootLayout);
 
-        // Add the footer navigation at the bottom
-        getLayoutInflater().inflate(R.layout.footer_navigation, layout, true);
-
+        // Setup footer logic
         FooterNavigation.setupFooterNavigation(this);
     }
-
     private Button createStyledButton(String text, int bgColor) {
         Button button = new Button(this);
         button.setText(text);
@@ -115,4 +121,5 @@ public class RescuerActivity extends AppCompatActivity {
         button.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_button_pink));
         return button;
     }
+
 }
