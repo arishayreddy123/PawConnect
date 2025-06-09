@@ -6,6 +6,7 @@ import android.view.*;
 import android.widget.*;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class AdminListingAdapter extends RecyclerView.Adapter<AdminListingAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, breed, age, description;
         Button deleteButton;
+        ImageView petImageView;
 
         public ViewHolder(View view) {
             super(view);
@@ -28,6 +30,7 @@ public class AdminListingAdapter extends RecyclerView.Adapter<AdminListingAdapte
             age = view.findViewById(R.id.ageTextView);
             description = view.findViewById(R.id.descriptionTextView);
             deleteButton = view.findViewById(R.id.deleteButton);
+            petImageView = view.findViewById(R.id.petImageView);
             view.findViewById(R.id.editButton).setVisibility(View.GONE); // Hide Edit
         }
     }
@@ -46,6 +49,17 @@ public class AdminListingAdapter extends RecyclerView.Adapter<AdminListingAdapte
         holder.breed.setText("Breed: " + pet.breed);
         holder.age.setText("Age: " + (pet.age != null ? pet.age.toString() : ""));
         holder.description.setText("Description: " + pet.description);
+
+        if (pet.imageUrl != null && !pet.imageUrl.isEmpty()) {
+            Glide.with(holder.itemView.getContext())
+                .load(pet.imageUrl)
+                .placeholder(android.R.color.darker_gray)
+                .error(android.R.drawable.ic_menu_report_image)
+                .centerCrop()
+                .into(holder.petImageView);
+        } else {
+            holder.petImageView.setImageResource(android.R.drawable.ic_menu_report_image);
+        }
 
         holder.deleteButton.setVisibility(View.VISIBLE);
         holder.deleteButton.setOnClickListener(v -> {
