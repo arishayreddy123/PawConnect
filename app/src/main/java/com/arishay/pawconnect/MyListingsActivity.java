@@ -30,13 +30,13 @@ public class MyListingsActivity extends AppCompatActivity {
             .whereEqualTo("ownerId", currentUserId)
             .get()
             .addOnSuccessListener(querySnapshot -> {
-                listingList.clear();
+        listingList.clear();
                 for (com.google.firebase.firestore.DocumentSnapshot doc : querySnapshot.getDocuments()) {
                     Listing l = doc.toObject(Listing.class);
                     l.id = doc.getId();
                     listingList.add(l);
                 }
-                adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
             })
             .addOnFailureListener(e -> {
                 Toast.makeText(this, "Failed to load your listings.", Toast.LENGTH_SHORT).show();
