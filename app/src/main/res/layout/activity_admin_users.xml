@@ -28,23 +28,23 @@
         android:elevation="10dp">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/searchEmailInput"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/searchEmailInput"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
                 android:hint="Search email..."
                 android:background="@android:color/white"
                 android:padding="8dp" />
 
-            <Spinner
-                android:id="@+id/roleFilterSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <Spinner
+            android:id="@+id/roleFilterSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@android:color/white" />
         </LinearLayout>

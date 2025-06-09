@@ -14,20 +14,20 @@
         android:fillViewport="true"
         android:padding="16dp">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
             <!-- Header -->
-            <TextView
-                android:text="Admin Dashboard"
-                android:textSize="24sp"
-                android:textStyle="bold"
+        <TextView
+            android:text="Admin Dashboard"
+            android:textSize="24sp"
+            android:textStyle="bold"
                 android:textColor="@color/accentYellow"
-                android:layout_marginBottom="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
             <!-- Charts Container -->
             <LinearLayout
@@ -38,19 +38,19 @@
                 android:padding="16dp"
                 android:elevation="10dp">
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/userPieChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_marginBottom="24dp" />
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/userPieChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="24dp" />
 
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/requestBarChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/requestBarChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+</ScrollView>
 
     <!-- Footer Navigation -->
     <include

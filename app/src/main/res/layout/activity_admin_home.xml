@@ -39,56 +39,56 @@
                 android:gravity="center"
                 android:elevation="10dp">
 
-                <TextView
+    <TextView
                     android:id="@+id/headerTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Welcome, Admin!"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
+        android:textSize="24sp"
+        android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="24dp" />
 
-                <Button
-                    android:id="@+id/manageListingsBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/manageListingsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
                     android:text="📋 Manage Listings"
                     android:backgroundTint="@color/hotPink"
                     android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
-                <Button
-                    android:id="@+id/manageUsersBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/manageUsersBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
                     android:text="👥 Manage Users"
                     android:backgroundTint="@color/hotPink"
                     android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
-                <Button
-                    android:id="@+id/addUserBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/addUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
                     android:text="➕ Add New User"
                     android:backgroundTint="@color/hotPink"
                     android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
-                <Button
-                    android:id="@+id/dashboardBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/dashboardBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
                     android:text="📊 View Dashboard"
                     android:backgroundTint="@color/hotPink"
                     android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
-                <Button
-                    android:id="@+id/viewLogsBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/viewLogsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
                     android:text="📝 View Audit Logs"
                     android:backgroundTint="@color/hotPink"
                     android:textSize="16sp" />
