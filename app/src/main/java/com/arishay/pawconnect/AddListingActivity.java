@@ -35,7 +35,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddListingActivity extends AppCompatActivity {
-    private static final String IMGUR_CLIENT_ID = "YOUR_CLIENT_ID"; // Replace with your Imgur Client ID
+    // TODO: Replace this with your actual Imgur API Client ID from https://api.imgur.com/oauth2/addclient
+    private static final String IMGUR_CLIENT_ID = "912843f93a37281";
     private static final int PERMISSION_REQUEST_CODE = 1001;
 
     private EditText nameInput, breedInput, ageInput, descriptionInput;
@@ -258,8 +259,8 @@ public class AddListingActivity extends AppCompatActivity {
         com.google.firebase.firestore.FirebaseFirestore.getInstance().collection("listings")
             .add(listing)
             .addOnSuccessListener(documentReference -> {
-                Toast.makeText(this, "Pet listing added successfully!", Toast.LENGTH_SHORT).show();
-                finish();
+        Toast.makeText(this, "Pet listing added successfully!", Toast.LENGTH_SHORT).show();
+        finish();
             })
             .addOnFailureListener(e -> {
                 Toast.makeText(this, "Failed to add listing: " + e.getMessage(), Toast.LENGTH_SHORT).show();
